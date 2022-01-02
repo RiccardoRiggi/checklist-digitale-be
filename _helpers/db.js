@@ -1,6 +1,9 @@
 const config = require('config.json');
 const mysql = require('mysql2/promise');
 const { Sequelize } = require('sequelize');
+const bcrypt = require('bcryptjs');
+const Op = require('sequelize').Op;
+
 
 module.exports = db = {};
 
@@ -28,6 +31,21 @@ async function initialize() {
     utenteModel = require('../utenti/utente.model');
     db.User = utenteModel(sequelize);
 
+    logAutenticazioneModel = require('../logAutenticazioni/logAutenticazioni.model');
+    db.LogAutenticazione = logAutenticazioneModel(sequelize);
+
+    logOperazioniModel = require('../logOperazioni/logOperazioni.model');
+    db.LogOperazioni = logOperazioniModel(sequelize);
+
     // sync all models with database
     await sequelize.sync();
+
+
+
+    utenteAdmin = config.utenteAdmin;
+    const userTrovato = await db.User.findOne({ where: {email: utenteAdmin.email, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
+    if (!userTrovato) {
+        utenteAdmin.password=await bcrypt.hash(utenteAdmin.password, 10)
+        await db.User.create(utenteAdmin);
+    }   
 }

@@ -4,19 +4,29 @@ const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const userService = require('./utente.service');
+const logAutenticazioneService = require('../logAutenticazioni/logAutenticazioni.service');
+const logOperazioniService = require('../logOperazioni/logOperazioni.service');
 
-// routes
-router.post('/autenticazione', authenticateSchema, authenticate);
-router.post('/registra',authorize(), registerSchema, register);
+/*
+    ROUTES
+*/
+
+router.post('/autenticazione', autenticazioneValidation, autenticazione);
+router.post('/registra', authorize(), registerSchema, register);
 router.get('/', authorize(), getAll);
-router.get('/utenteCorrente', authorize(), getCurrent);
+router.get('/utenteCorrente', authorize(), getUtenteCorrenteLoggato);
 router.get('/:id', authorize(), getById);
 router.put('/:id', authorize(), updateSchema, aggiorna);
-router.delete('/:id', authorize(),deleteSchema ,eliminazioneLogica);
+router.delete('/:id', authorize(), deleteSchema, eliminazioneLogica);
 
 module.exports = router;
 
-function authenticateSchema(req, res, next) {
+function registraLogOperazione(req, res, next) {
+    logOperazioniService.registraLogOperazione(req.user.sub,req.body).then()
+    .catch(next);
+}
+
+function autenticazioneValidation(req, res, next) {
     const schema = Joi.object({
         email: Joi.string().required(),
         password: Joi.string().required()
@@ -24,11 +34,19 @@ function authenticateSchema(req, res, next) {
     validateRequest(req, next, schema);
 }
 
-function authenticate(req, res, next) {
+function autenticazione(req, res, next) {
     userService.authenticate(req.body)
         .then(user => res.json(user))
         .catch(next);
+        const log = {
+            email:req.body.email
+        }
+        logAutenticazioneService.create(log);
+        logOperazioniService.registraLogOperazione(req.body.email,JSON.stringify(req.body));
+
 }
+
+
 
 function registerSchema(req, res, next) {
     const schema = Joi.object({
@@ -47,7 +65,10 @@ function register(req, res, next) {
     userService.create(req.body)
         .then(() => res.json({ message: 'Registration successful' }))
         .catch(next);
+        logOperazioniService.registraLogOperazione(req.user.identificativo,JSON.stringify(req.body));    
 }
+
+
 
 function getAll(req, res, next) {
     userService.getAll()
@@ -55,8 +76,9 @@ function getAll(req, res, next) {
         .catch(next);
 }
 
-function getCurrent(req, res, next) {
+function getUtenteCorrenteLoggato(req, res, next) {
     res.json(req.user);
+    logOperazioniService.registraLogOperazione(req.user.identificativo,JSON.stringify(req.body)); 
 }
 
 function getById(req, res, next) {

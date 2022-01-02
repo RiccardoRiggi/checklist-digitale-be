@@ -19,16 +19,20 @@ async function authenticate({ email, password }) {
     console.log(password);
     const user = await db.User.scope('withHash').findOne({ where: { email } });
 
+    console.log(user.password);
+
     if (!user || !(await bcrypt.compare(password, user.password)))
         throw 'Username or password is incorrect';
 
     // authentication successful
-    const token = jwt.sign({ sub: user.idUtente }, config.secret, { expiresIn: '7d' });
+
+
+    const token = jwt.sign({ sub: user.identificativo }, config.secret, { expiresIn: '7d' });
     return { ...omitHash(user.get()), token };
 }
 
 async function getAll() {
-    return await db.User.findAll({ where: { dataEliminazione: { [Op.eq]: null } }, utenteEliminazione: { [Op.eq]: null } });
+    return await db.User.findAll({ where: { dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
 }
 
 async function getById(id) {
