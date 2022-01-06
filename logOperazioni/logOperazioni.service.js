@@ -6,10 +6,11 @@ module.exports = {
     registraLogOperazione,
 };
 
-async function registraLogOperazione(codiceUtenteInput,rawDataInput) {
+async function registraLogOperazione(urlProvenienzaInput,codiceUtenteInput,rawDataInput) {
     const pojo = {
         codiceUtente:codiceUtenteInput,
-        rawData:rawDataInput
+        rawData:rawDataInput,
+        urlProvenienza:urlProvenienzaInput
     }
     await db.LogOperazioni.create(pojo);
 }

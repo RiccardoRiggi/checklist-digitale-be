@@ -13,8 +13,17 @@
         "dataDiNascita": "2000-06-12",
         "email": "info@riccardoriggi.it",
         "password": "123456",
-        "codiceRuolo": "A",
+        "tRuoloCodice": "A",
         "userInsert": "INSTALLAZIONE",
         "dateInsert": "2022-01-02"
+    },
+    "ruoli":[{
+        "codice":"A",
+        "descrizione":"Amministratore"
+    },{
+        "codice":"U",
+        "descrizione":"Utente"
     }
+        
+    ]
 }

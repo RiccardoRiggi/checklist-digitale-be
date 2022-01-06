@@ -6,10 +6,8 @@ function model(sequelize) {
     const attributes = {
         identificativo: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true},
         nome:{type: DataTypes.STRING, allowNull: false},
-        cognome:{type: DataTypes.STRING, allowNull: false},
-        dataDiNascita:{type: DataTypes.DATEONLY, allowNull: false},
-        email:{type: DataTypes.STRING, allowNull: false},
-        password:{type: DataTypes.STRING, allowNull: false},
+        selettiva:{type: DataTypes.STRING, allowNull: false},
+        //AGGIUNGERE CODICE TIPO VEICOLO NELLA FOREIGN KEY
         userInsert:{type: DataTypes.STRING, allowNull: false},
         dateInsert:{type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW},
         userUpdate:{type: DataTypes.STRING, allowNull: true},
@@ -19,19 +17,10 @@ function model(sequelize) {
     };
 
     const options = {
-
-        defaultScope: {
-            // exclude hash by default
-            attributes: { exclude: ['password'] },
-        },
-        scopes: {
-            // include hash with this scope
-            withHash: { attributes: {}, }
-        },
-        tableName: 'utenti',
+        tableName: 'veicoli',
         timestamps: false,
     };
 
    
-    return sequelize.define('utente', attributes, options,);
+    return sequelize.define('veicolo', attributes, options,);
 }

@@ -28,14 +28,22 @@ async function initialize() {
     const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' }, opts);
 
     // init models and add them to the exported db object
+    tRuolo = require('../truolo/truolo.model');
+    db.tRuolo = tRuolo(sequelize);
+
     utenteModel = require('../utenti/utente.model');
     db.User = utenteModel(sequelize);
+
+    db.tRuolo.hasMany(db.User); //COLLEGO LE DUE TAVOLE
 
     logAutenticazioneModel = require('../logAutenticazioni/logAutenticazioni.model');
     db.LogAutenticazione = logAutenticazioneModel(sequelize);
 
     logOperazioniModel = require('../logOperazioni/logOperazioni.model');
     db.LogOperazioni = logOperazioniModel(sequelize);
+
+    veicoliModel = require('../veicoli/veicoli.model');
+    db.veicoli = veicoliModel(sequelize);
 
     // sync all models with database
     await sequelize.sync();
@@ -48,4 +56,11 @@ async function initialize() {
         utenteAdmin.password=await bcrypt.hash(utenteAdmin.password, 10)
         await db.User.create(utenteAdmin);
     }   
+
+    config.ruoli.forEach(element => {
+        db.tRuolo.create(element);
+    });
+
+
 }
+
