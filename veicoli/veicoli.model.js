@@ -7,7 +7,6 @@ function model(sequelize) {
         identificativo: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true},
         nome:{type: DataTypes.STRING, allowNull: false},
         selettiva:{type: DataTypes.STRING, allowNull: false},
-        //AGGIUNGERE CODICE TIPO VEICOLO NELLA FOREIGN KEY
         userInsert:{type: DataTypes.STRING, allowNull: false},
         dateInsert:{type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW},
         userUpdate:{type: DataTypes.STRING, allowNull: true},

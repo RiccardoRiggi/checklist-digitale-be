@@ -38,7 +38,7 @@ function autenticazione(req, res, next) {
         email: req.body.email
     }
     logAutenticazioneService.create(log);
-    logOperazioniService.registraLogOperazione(req.body.email, JSON.stringify(req.body));
+    logOperazioniService.registraLogOperazione(req.originalUrl,req.body.email, JSON.stringify(req.body));
 }
 
 //    Funzione per recuperare i dati dell'utente loggato
@@ -94,7 +94,7 @@ function aggiornamentoValidation(req, res, next) {
         dataDiNascita: Joi.date(),
         email: Joi.string().email(),
         tRuoloCodice: Joi.string().max(1),
-        identificativo: Joi.number().equal(req.user.identificativo)
+        identificativo: Joi.number().equal(req.params.id)
     });
     validateRequest(req, next, schema);
 }
@@ -109,7 +109,7 @@ function aggiornaUtente(req, res, next) {
 //  Funzione per validare la cancellazione di un utente
 function deleteValidation(req, res, next) {
     const schema = Joi.object({
-        identificativo: Joi.number().equal(req.user.identificativo),
+        identificativo: Joi.number().equal(req.params.id),
         userDelete: Joi.string().required()
     });
     validateRequest(req, next, schema);

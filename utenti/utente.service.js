@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const Op = require('sequelize').Op;
+const { compile } = require('joi');
 
 //  Esporto le seguenti funzioni
 module.exports = {
@@ -17,10 +18,15 @@ module.exports = {
 
 //  Funzione che esegue l'autenticazione e genera il token JWT
 async function autenticaUtente({ email, password }) {
-    const user = await db.User.findOne({ where: { email } });
+    const user = await db.User.scope('withHash').findOne({ where: { email } });
+    console.log(user);
+    console.log(password);
+    console.log(user.password);
 
     if (!user || !(await bcrypt.compare(password, user.password)))
         throw 'Email e/o password non corretta/e';
+
+    user.password=undefined;    
 
     const token = jwt.sign({ sub: user.identificativo }, config.secret, { expiresIn: '7d' });
     return { ...omitHash(user.get()), token };

@@ -42,13 +42,20 @@ async function initialize() {
     logOperazioniModel = require('../logOperazioni/logOperazioni.model');
     db.LogOperazioni = logOperazioniModel(sequelize);
 
+    tVeicolo = require('../tveicolo/tveicolo.model');
+    db.tVeicolo = tVeicolo(sequelize);
+
     veicoliModel = require('../veicoli/veicoli.model');
-    db.veicoli = veicoliModel(sequelize);
+    db.Veicoli = veicoliModel(sequelize);
+
+    db.tVeicolo.hasMany(db.Veicoli); //COLLEGO LE DUE TAVOLE
 
     // sync all models with database
     await sequelize.sync();
 
-
+    config.ruoli.forEach(element => {
+        db.tRuolo.create(element);
+    });
 
     utenteAdmin = config.utenteAdmin;
     const userTrovato = await db.User.findOne({ where: {email: utenteAdmin.email, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
@@ -57,9 +64,7 @@ async function initialize() {
         await db.User.create(utenteAdmin);
     }   
 
-    config.ruoli.forEach(element => {
-        db.tRuolo.create(element);
-    });
+    
 
 
 }
