@@ -25,5 +25,30 @@
         "descrizione":"Utente"
     }
         
+    ],
+    "veicoli":[{
+        "codice":"A",
+        "descrizione":"Ambulanza"
+    },{
+        "codice":"V",
+        "descrizione":"Vettura"
+    },{
+        "codice":"T",
+        "descrizione":"Trasporto Disabili"
+    },{
+        "codice":"M",
+        "descrizione":"Automedica"
+    }
+        
+    ],"statoChecklist":[{
+        "codice":"C",
+        "descrizione":"Completata"
+    },{
+        "codice":"I",
+        "descrizione":"Iniziata"
+    },{
+        "codice":"N",
+        "descrizione":"Non ancora iniziata"
+    }        
     ]
 }

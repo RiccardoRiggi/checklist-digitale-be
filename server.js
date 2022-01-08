@@ -12,6 +12,7 @@ app.use(cors());
 // api routes
 app.use('/utenti', require('./utenti/utente.controller'));
 app.use('/veicoli', require('./veicoli/veicoli.controller'));
+app.use('/checklistTemplate', require('./checklisttemplate/checklisttemplate.controller'));
 
 // global error handler
 app.use(errorHandler);

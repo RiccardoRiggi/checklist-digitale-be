@@ -50,11 +50,22 @@ async function initialize() {
 
     db.tVeicolo.hasMany(db.Veicoli); //COLLEGO LE DUE TAVOLE
 
+    checklistTemplateModel = require('../checklisttemplate/checklisttemplate.model');
+    db.Checklistemplate = checklistTemplateModel(sequelize);
+
+    db.Veicoli.hasMany(db.Checklistemplate);
+
+    //ChecklistTemplate è nullo 
+
     // sync all models with database
     await sequelize.sync();
 
     config.ruoli.forEach(element => {
         db.tRuolo.create(element);
+    });
+
+    config.veicoli.forEach(element => {
+        db.tVeicolo.create(element);
     });
 
     utenteAdmin = config.utenteAdmin;
