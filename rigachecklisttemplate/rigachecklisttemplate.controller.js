@@ -39,7 +39,7 @@ function registrazioneValidation(req, res, next) {
 
 //  Funzione per registrare un nuovo template di riga checklist
 function inserisciRigaCheckListTemplate(req, res, next) {
-    rigaCheckListTemplateService.inserisciRigaChecklistTemplate(req.body)
+    rigaCheckListTemplateService.inserisciRigaChecklistTemplate(req.body,req.user)
         .then(() => res.json({ message: 'Template di riga checklist inserito con successo' }))
         .catch(next);
     logOperazioniService.registraLogOperazione(req.originalUrl, req.user.identificativo, JSON.stringify(req.body));
@@ -68,7 +68,7 @@ function aggiornamentoValidation(req, res, next) {
 
 //  Funzione per aggiorare template di riga checklist
 function aggiornaRigaCheckListTemplate(req, res, next) {
-    rigaCheckListTemplateService.aggiornaRigaChecklistTemplate(req.params.id, req.body)
+    rigaCheckListTemplateService.aggiornaRigaChecklistTemplate(req.params.id, req.body,req.user)
         .then(user => res.json(user))
         .catch(next);
 }
@@ -84,7 +84,7 @@ function deleteValidation(req, res, next) {
 
 //  Funzione per eliminare logicamente template di riga checklist
 function eliminaLogicamenteRigaCheckListTemplate(req, res, next) {
-    rigaCheckListTemplateService.cancellaLogicamenteRigaChecklistTemplate(req.params.id, req.body)
+    rigaCheckListTemplateService.cancellaLogicamenteRigaChecklistTemplate(req.params.id, req.body,req.user)
         .then(user => res.json(user))
         .catch(next);
 }

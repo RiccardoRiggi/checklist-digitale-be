@@ -10,24 +10,19 @@ module.exports = db = {};
 initialize();
 
 async function initialize() {
-    // create db if it doesn't already exist
     const { host, port, user, password, database } = config.database;
     const connection = await mysql.createConnection({ host, port, user, password });
     await connection.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
 
-    //database wide options
     var opts = {
         define: {
-            //prevent sequelize from pluralizing table names
             freezeTableName: true
         }
     }
 
 
-    // connect to db
     const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' }, opts);
 
-    // init models and add them to the exported db object
     tRuolo = require('../truolo/truolo.model');
     db.tRuolo = tRuolo(sequelize);
 
@@ -60,27 +55,32 @@ async function initialize() {
 
     db.Checklistemplate.hasMany(db.RigaChecklistemplate);
 
+    checklistModel = require('../checklist/checklist.model');
+    db.Checklist = checklistModel(sequelize);
+    db.Veicoli.hasMany(db.Checklist);
 
-    // sync all models with database
+    rigaChecklistModel = require('../rigachecklist/rigachecklist.model');
+    db.RigaChecklist = rigaChecklistModel(sequelize);
+    db.Checklist.hasMany(db.RigaChecklist);
+
     await sequelize.sync();
 
+    //Inserisco i fuoli
     config.ruoli.forEach(element => {
         db.tRuolo.create(element);
     });
 
+    //Inserisco i tipi veicolo
     config.veicoli.forEach(element => {
         db.tVeicolo.create(element);
     });
 
+    //Inserisco un utente amministratore
     utenteAdmin = config.utenteAdmin;
-    const userTrovato = await db.User.findOne({ where: {email: utenteAdmin.email, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
+    const userTrovato = await db.User.findOne({ where: { email: utenteAdmin.email, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
     if (!userTrovato) {
-        utenteAdmin.password=await bcrypt.hash(utenteAdmin.password, 10)
+        utenteAdmin.password = await bcrypt.hash(utenteAdmin.password, 10)
         await db.User.create(utenteAdmin);
-    }   
-
-    
-
-
+    }
 }
 

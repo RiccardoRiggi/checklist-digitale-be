@@ -18,18 +18,15 @@ module.exports = {
 
 //  Funzione che esegue l'autenticazione e genera il token JWT
 async function autenticaUtente({ email, password }) {
-    const user = await db.User.scope('withHash').findOne({ where: { email } });
-    console.log(user);
-    console.log(password);
-    console.log(user.password);
+    const utenteTrovato = await db.User.scope('withHash').findOne({ where: { email } });
 
-    if (!user || !(await bcrypt.compare(password, user.password)))
+    if (!utenteTrovato || !(await bcrypt.compare(password, utenteTrovato.password)))
         throw 'Email e/o password non corretta/e';
 
-    user.password=undefined;    
+    utenteTrovato.password=undefined;    
 
-    const token = jwt.sign({ sub: user.identificativo }, config.secret, { expiresIn: '7d' });
-    return { ...omitHash(user.get()), token };
+    const token = jwt.sign({ sub: utenteTrovato.identificativo }, config.secret, { expiresIn: '7d' });
+    return { ...omitHash(utenteTrovato.get()), token };
 }
 
 //  Funzione che restituisce la lista degli utenti
@@ -52,17 +49,14 @@ async function inserisciUtente(params) {
     if (params.password) {
         params.password = await bcrypt.hash(params.password, 10);
     }
-
-    console.log(params);
-
     await db.User.create(params);
 }
 
 //  Funzione che aggiorna un utente
 async function aggiornaUtente(id, params) {
-    const user = await getUser(id);
+    const utenteTrovato = await getUser(id);
 
-    const emailCambiata = params.email && user.email !== params.email;
+    const emailCambiata = params.email && utenteTrovato.email !== params.email;
     if (emailCambiata && await db.User.findOne({ where: { email: params.email, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } })) {
         throw 'Email "' + params.email + '" già in uso';
     }
@@ -71,32 +65,32 @@ async function aggiornaUtente(id, params) {
         params.hash = await bcrypt.hash(params.password, 10);
     }
 
-    Object.assign(user, params);
-    await user.save();
+    Object.assign(utenteTrovato, params);
+    await utenteTrovato.save();
 
-    return omitHash(user.get());
+    return omitHash(utenteTrovato.get());
 }
 
 //  Funzione che cancella logicamente un utente dalla base dati
 async function cancellaUtenteLogicamente(id, params) {
-    const user = await getUser(id);
-    Object.assign(user, params);
-    user.dateDelete=Date.now();
-    await user.save();
-    return omitHash(user.get());
+    const utenteTrovato = await getUser(id);
+    Object.assign(utenteTrovato, params);
+    utenteTrovato.dateDelete=Date.now();
+    await utenteTrovato.save();
+    return omitHash(utenteTrovato.get());
 }
 
 //  Funzione che cancella un utente dalla base dati
 async function cancellaUtente(id) {
-    const user = await getUser(id);
-    await user.destroy();
+    const utenteTrovato = await getUser(id);
+    await utenteTrovato.destroy();
 }
 
 //  Funzione che restituisce un utente non cancellato
 async function getUser(id) {
-    const user = await db.User.findOne({ where: {identificativo: id, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
-    if (!user) throw 'Utente non trovato';
-    return user;
+    const utenteTrovato = await db.User.findOne({ where: {identificativo: id, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
+    if (!utenteTrovato) throw 'Utente non trovato';
+    return utenteTrovato;
 }
 
 //  Funzione che omette gli HASH

@@ -7,9 +7,6 @@ const userService = require('./utente.service');
 const logAutenticazioneService = require('../logAutenticazioni/logAutenticazioni.service');
 const logOperazioniService = require('../logOperazioni/logOperazioni.service');
 
-/*
-    ROUTES
-*/
 router.post('/autenticazione', autenticazioneValidation, autenticazione);
 router.get('/utenteCorrente', authorize(), getUtenteCorrenteLoggato);
 router.get('/', authorize(), getListaUtenti);
@@ -20,7 +17,7 @@ router.delete('/:id', authorize(), deleteValidation, eliminazioneLogica);
 
 module.exports = router;
 
-//    Funzione per validare gli input del path /autenticazione
+//    Funzione per validare gli input dell'autenticazione
 function autenticazioneValidation(req, res, next) {
     const schema = Joi.object({
         email: Joi.string().required(),

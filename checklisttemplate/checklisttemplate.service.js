@@ -11,43 +11,44 @@ module.exports = {
     cancellaLogicamenteVeicolo: cancellaLogicamenteChecklistTemplate
 };
 
-//  Funzione che restituisce la lista dei veicoli
+//  Funzione che restituisce la lista dei template delle checklist
 async function getListaChecklistTemplate() {
-    console.log(db);
     return await db.Checklistemplate.findAll({ where: { dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
 }
 
-//  Funzione che restituisce un singolo veicolo
+//  Funzione che restituisce un singolo template di checklist
 async function getChecklistTemplate(id) {
-    const user = await db.Checklistemplate.findOne({ where: {identificativo: id, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
-    if (!user) throw 'Checklist Template non trovato';
-    return user;
+    const checklistTrovata = await db.Checklistemplate.findOne({ where: {identificativo: id, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } });
+    if (!checklistTrovata) throw 'Checklist Template non trovato';
+    return checklistTrovata;
 }
 
 //  Funzione che inserisce un nuovo template checklist
-async function inserisciChecklistTemplate(params) {
+async function inserisciChecklistTemplate(params,utente) {
+    if(utente.tRuoloCodice!='A')
+        throw 'Accesso negato perché non disponi dei privilegi sufficienti';
     await db.Checklistemplate.create(params);
 }
 
 //  Funzione che aggiorna template di checklist
-async function aggiornaChecklistTemplate(id, params) {
-    const user = await getChecklistTemplate(id);
+async function aggiornaChecklistTemplate(id, params,utente) {
+    
+    if(utente.tRuoloCodice!='A')
+        throw 'Accesso negato perché non disponi dei privilegi sufficienti';
 
-    const selettivaCambiata = params.selettiva && user.selettiva !== params.selettiva;
-    if (selettivaCambiata && await db.Checklistemplate.findOne({ where: { selettiva: params.selettiva, dateDelete: { [Op.eq]: null } }, userDelete: { [Op.eq]: null } })) {
-        throw 'Selettiva "' + params.selettiva + '" già in uso';
-    }
-
-    Object.assign(user, params);
-    await user.save();
-    return user.get();
+    const checklistTrovata = await getChecklistTemplate(id);
+    Object.assign(checklistTrovata, params);
+    await checklistTrovata.save();
+    return checklistTrovata.get();
 }
 
 //  Funzione che cancella logicamente template di checklist
-async function cancellaLogicamenteChecklistTemplate(id, params) {
-    const user = await getChecklistTemplate(id);
-    Object.assign(user, params);
-    user.dateDelete=Date.now();
-    await user.save();
-    return user.get();
+async function cancellaLogicamenteChecklistTemplate(id, params,utente) {
+    if(utente.tRuoloCodice!='A')
+        throw 'Accesso negato perché non disponi dei privilegi sufficienti';
+    const checklistTrovata = await getChecklistTemplate(id);
+    Object.assign(checklistTrovata, params);
+    checklistTrovata.dateDelete=Date.now();
+    await checklistTrovata.save();
+    return checklistTrovata.get();
 }

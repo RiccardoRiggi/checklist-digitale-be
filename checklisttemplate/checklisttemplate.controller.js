@@ -6,9 +6,6 @@ const authorize = require('_middleware/authorize')
 const checkListTemplateService = require('./checklisttemplate.service');
 const logOperazioniService = require('../logOperazioni/logOperazioni.service');
 
-/*
-    ROUTES
-*/
 router.get('/', authorize(), getListaChecklistTemplate);
 router.post('/inserisci', authorize(), registrazioneValidation, inserisciCheckListTemplate);
 router.get('/:id', authorize(), getCheckListTemplateById);
@@ -37,7 +34,7 @@ function registrazioneValidation(req, res, next) {
 
 //  Funzione per registrare un nuovo template di checklist
 function inserisciCheckListTemplate(req, res, next) {
-    checkListTemplateService.inserisciChecklistTemplate(req.body)
+    checkListTemplateService.inserisciChecklistTemplate(req.body,req.user)
         .then(() => res.json({ message: 'Template di checklist inserito con successo' }))
         .catch(next);
     logOperazioniService.registraLogOperazione(req.originalUrl, req.user.identificativo, JSON.stringify(req.body));
@@ -64,7 +61,7 @@ function aggiornamentoValidation(req, res, next) {
 
 //  Funzione per aggiorare template di checklist
 function aggiornaCheckListTemplate(req, res, next) {
-    checkListTemplateService.aggiornaChecklistTemplate(req.params.id, req.body)
+    checkListTemplateService.aggiornaChecklistTemplate(req.params.id, req.body,req.user)
         .then(user => res.json(user))
         .catch(next);
 }
@@ -80,7 +77,7 @@ function deleteValidation(req, res, next) {
 
 //  Funzione per eliminare logicamente template di checklist
 function eliminaLogicamenteCheckListTemplate(req, res, next) {
-    checkListTemplateService.cancellaLogicamenteVeicolo(req.params.id, req.body)
+    checkListTemplateService.cancellaLogicamenteVeicolo(req.params.id, req.body,req.user)
         .then(user => res.json(user))
         .catch(next);
 }

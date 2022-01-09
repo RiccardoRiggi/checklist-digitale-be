@@ -7,7 +7,9 @@ function model(sequelize) {
         identificativo: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true },
         nome: { type: DataTypes.STRING, allowNull: false },
         descrizione: { type: DataTypes.STRING, allowNull: true },
-        quantita: { type: DataTypes.INTEGER, allowNull: false },
+        note: { type: DataTypes.STRING, allowNull: true },
+        isConfermato: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+        quantitaRiferimento: { type: DataTypes.INTEGER, allowNull: false },
         userInsert: { type: DataTypes.STRING, allowNull: false },
         dateInsert: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
         userUpdate: { type: DataTypes.STRING, allowNull: true },
@@ -17,10 +19,10 @@ function model(sequelize) {
     };
 
     const options = {
-        tableName: 'riga-checklist-template',
+        tableName: 'riga-checklist',
         timestamps: false,
     };
 
 
-    return sequelize.define('rigaChecklistTemplate', attributes, options,);
+    return sequelize.define('rigaChecklist', attributes, options,);
 }

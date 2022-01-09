@@ -6,9 +6,6 @@ const authorize = require('_middleware/authorize')
 const veicoliService = require('./veicoli.service');
 const logOperazioniService = require('../logOperazioni/logOperazioni.service');
 
-/*
-    ROUTES
-*/
 router.get('/', authorize(), getListaVeicoli);
 router.post('/inserisci', authorize(), registrazioneValidation, inserisciVeicolo);
 router.get('/:id', authorize(), getVeicoloById);

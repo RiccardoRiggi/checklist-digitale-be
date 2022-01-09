@@ -1,0 +1,1058 @@
+_type: export
+__export_format: 4
+__export_date: 2022-01-09T16:16:53.315Z
+__export_source: insomnia.desktop.app:v2021.7.2
+resources:
+  - _id: req_a178510d8feb451295b788e30e78f94a
+    parentId: fld_84d44979103f4ada998af06e4c8695ff
+    modified: 1641549974462
+    created: 1641457573684
+    url: http://localhost:4000/utenti/1
+    name: Get Utente By Id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTUxMTkwMCwiZXhwIjoxNjQyMTE2NzAwfQ.JjJEuW9zd5c9DIVxXzCBhEpIs-OgG3bjFH6zp9cNzN0
+    metaSortKey: -1641457573684
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_84d44979103f4ada998af06e4c8695ff
+    parentId: fld_ff8796cb358b46dab4f500bf0e1d84d5
+    modified: 1641455788115
+    created: 1641130637884
+    name: Utenti
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1641130637884
+    _type: request_group
+  - _id: fld_ff8796cb358b46dab4f500bf0e1d84d5
+    parentId: wrk_56056af32039461c89a57638e3a7cb05
+    modified: 1641455784610
+    created: 1641455784610
+    name: Checklist Digitale
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1641455784611
+    _type: request_group
+  - _id: wrk_56056af32039461c89a57638e3a7cb05
+    parentId: null
+    modified: 1641130622496
+    created: 1641130622496
+    name: Checklist Digitale
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_546ed372f46546b08783deaff569dfe0
+    parentId: fld_84d44979103f4ada998af06e4c8695ff
+    modified: 1641743979919
+    created: 1641457853699
+    url: http://localhost:4000/utenti/1
+    name: Aggiorna Utente
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Riccardo",
+        	"cognome": "Riggi",
+        	"dataDiNascita": "2000-06-12",
+        	"email": "info@riccardoriggi.it",
+        	"tRuoloCodice": "A",
+        	"userUpdate": "UTENTE_CHE_AGGIORNA",
+        	"dateUpdate": "2022-01-06T00:00:00.000Z"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTUxMTkwMCwiZXhwIjoxNjQyMTE2NzAwfQ.JjJEuW9zd5c9DIVxXzCBhEpIs-OgG3bjFH6zp9cNzN0
+    metaSortKey: -1641456942990.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b143062fda31400a8c82252076d8061a
+    parentId: fld_84d44979103f4ada998af06e4c8695ff
+    modified: 1641743982238
+    created: 1641468044629
+    url: http://localhost:4000/utenti/2
+    name: Elimina Utente
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"userDelete":"UTENTE_CHE_CANCELLA"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTUxMTkwMCwiZXhwIjoxNjQyMTE2NzAwfQ.JjJEuW9zd5c9DIVxXzCBhEpIs-OgG3bjFH6zp9cNzN0
+    metaSortKey: -1641456627643.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_abe4d610a7064d86aab10c0c540500f4
+    parentId: fld_84d44979103f4ada998af06e4c8695ff
+    modified: 1641743982855
+    created: 1641456312297
+    url: http://localhost:4000/utenti/registra
+    name: Registra Utente
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "Riccardo",
+        		"cognome": "Riggi",
+        		"dataDiNascita": "2000-06-12",
+        		"email": "web@riccardoriggi.it",
+        		"tRuoloCodice": "U",
+        		"password":"12345678",
+        		"userInsert":"UTENTE_CHE_INSERISCE"
+        	
+        	}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_bbf4c1850fa744f1b10a1a4380119dfb
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641456312297
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_361fd8e1bafb4584ad827cd51f5180ee
+    parentId: fld_84d44979103f4ada998af06e4c8695ff
+    modified: 1641456483479
+    created: 1641455803528
+    url: http://localhost:4000/utenti/
+    name: Lista Utenti
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641455803528
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_03e9d5cf5a78441baebfd32bab090e05
+    parentId: fld_84d44979103f4ada998af06e4c8695ff
+    modified: 1641743944508
+    created: 1641136890114
+    url: http://localhost:4000/utenti/autenticazione
+    name: Autenticazione
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email":"info@riccardoriggi.it",
+        	"password":"123456"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_8ca134eab7c1415bb8786477eee22d56
+    authentication: {}
+    metaSortKey: -1641131126207
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a615f043e1af4a51b2900ee73a94549d
+    parentId: fld_84d44979103f4ada998af06e4c8695ff
+    modified: 1641455825239
+    created: 1641140757663
+    url: http://localhost:4000/utenti/utenteCorrente
+    name: Utente Corrente
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_15c2ef56b4e3463c827a47d066d4586f
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+      prefix: ""
+      disabled: false
+    metaSortKey: -1641131126157
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b432e34e46ea4369b62f61a20f998f27
+    parentId: fld_bcb9b35b903947b3adb9eedfee7c4f4c
+    modified: 1641550496472
+    created: 1641490284625
+    url: http://localhost:4000/veicoli/1
+    name: Get Veicoli By Id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641457573684
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_bcb9b35b903947b3adb9eedfee7c4f4c
+    parentId: fld_ff8796cb358b46dab4f500bf0e1d84d5
+    modified: 1641490284586
+    created: 1641490284586
+    name: Veicoli
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1641130637859
+    _type: request_group
+  - _id: req_8e07177549054b2c8f83a999f3dbc0be
+    parentId: fld_bcb9b35b903947b3adb9eedfee7c4f4c
+    modified: 1641743984775
+    created: 1641490284627
+    url: http://localhost:4000/veicoli/1
+    name: Aggiorna Veicolo
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "Fiat Ducato 2020",
+        		"selettiva": "12346578",
+        		"userUpdate": "UTENTE_CHE_AGGIORNA"
+        	}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641456942990.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_88a5aa330f6f42338aa67edef01f23c5
+    parentId: fld_bcb9b35b903947b3adb9eedfee7c4f4c
+    modified: 1641743992869
+    created: 1641490284628
+    url: http://localhost:4000/veicoli/2
+    name: Elimina Veicolo
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"userDelete":"UTENTE_CHE_CANCELLA"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641456627643.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e022eda6361b49dfa058fc5f63ac2cb5
+    parentId: fld_bcb9b35b903947b3adb9eedfee7c4f4c
+    modified: 1641744012002
+    created: 1641490284621
+    url: http://localhost:4000/veicoli/inserisci
+    name: Inserisci Veicolo
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "Renault Master",
+        		"selettiva": "4321",
+        		"tVeicoloCodice":"A",
+        		"userInsert": "UTENTE_CHE_INSERISCE"
+        	}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_bbf4c1850fa744f1b10a1a4380119dfb
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641456312297
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ff195ba73d554f25a57d82364cf5b992
+    parentId: fld_bcb9b35b903947b3adb9eedfee7c4f4c
+    modified: 1641490394479
+    created: 1641490284617
+    url: http://localhost:4000/veicoli/
+    name: Lista Veicoli
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641455803528
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_114fcc28a36047e5b6f0e6fcaaaf6276
+    parentId: fld_47ec1c645cac49b59630ff2cbfaac688
+    modified: 1641586089160
+    created: 1641559691929
+    url: http://localhost:4000/checklistTemplate/
+    name: Lista Checklist Template
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464867.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_47ec1c645cac49b59630ff2cbfaac688
+    parentId: fld_ff8796cb358b46dab4f500bf0e1d84d5
+    modified: 1641557622486
+    created: 1641557349245
+    name: CheckList Template
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1641130637809
+    _type: request_group
+  - _id: req_c43525c3833a46029c875b1e8ba01b5e
+    parentId: fld_47ec1c645cac49b59630ff2cbfaac688
+    modified: 1641744039839
+    created: 1641631194596
+    url: http://localhost:4000/checklistTemplate/inserisci
+    name: Inserisci Checklist Template
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "Checklist Ufficiale",
+        		"veicoloIdentificativo": 1,
+        		"userInsert": "UTENTE_CHE_INSERISCE"
+        	}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_bbf4c1850fa744f1b10a1a4380119dfb
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464817.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c2d5a459ce014921ba5d84fc31e81fd7
+    parentId: fld_47ec1c645cac49b59630ff2cbfaac688
+    modified: 1641632607739
+    created: 1641631853666
+    url: http://localhost:4000/checklistTemplate/2
+    name: Get CheckList Template By Id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464767.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0bf613fc142e4e3bbc39d7243f334ae1
+    parentId: fld_47ec1c645cac49b59630ff2cbfaac688
+    modified: 1641744068125
+    created: 1641632193379
+    url: http://localhost:4000/checklistTemplate/1
+    name: Aggiorna Checklist Template
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "CHECKLIST NON UFFICIALE",
+        		"userUpdate": "UTENTE_CHE_AGGIORNA",
+        		"veicoloIdentificativo":1
+        	}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464717.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_83eae8d230d24f51a0b797b64740be67
+    parentId: fld_47ec1c645cac49b59630ff2cbfaac688
+    modified: 1641744074259
+    created: 1641632588922
+    url: http://localhost:4000/checklistTemplate/3
+    name: Elimina Checklist Template
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"userDelete":"UTENTE_CHE_CANCELLA"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464667.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_64baeb4c67f046fea74a67fae759b349
+    parentId: fld_6d30da89aa3c48acbcbc4fe320f4f797
+    modified: 1641715753100
+    created: 1641715391395
+    url: http://localhost:4000/rigaChecklistTemplate/lista/1
+    name: Lista Checklist Template
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464867.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_6d30da89aa3c48acbcbc4fe320f4f797
+    parentId: fld_ff8796cb358b46dab4f500bf0e1d84d5
+    modified: 1641715391380
+    created: 1641715391380
+    name: Riga CheckList Template
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1641130637759
+    _type: request_group
+  - _id: req_379366d4b17e402498f4ea60721c9cda
+    parentId: fld_6d30da89aa3c48acbcbc4fe320f4f797
+    modified: 1641715786935
+    created: 1641715391430
+    url: http://localhost:4000/rigaChecklistTemplate/1
+    name: Get CheckList Template By Id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464842.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5dbe987e68a4400fa014a55cf142207a
+    parentId: fld_6d30da89aa3c48acbcbc4fe320f4f797
+    modified: 1641744091195
+    created: 1641715391417
+    url: http://localhost:4000/rigaChecklistTemplate/inserisci
+    name: Inserisci Checklist Template
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Tavola spinale",
+        	"descrizione": "Presidio di immobilizzazione",
+        	"quantita": 1,
+        	"userInsert": "UTENTE_CHE_INSERISCE",
+        	"checklistTemplateIdentificativo": 1
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_bbf4c1850fa744f1b10a1a4380119dfb
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464817.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_399480c9447b437d810f98dadeefe909
+    parentId: fld_6d30da89aa3c48acbcbc4fe320f4f797
+    modified: 1641744102117
+    created: 1641715391440
+    url: http://localhost:4000/rigaChecklistTemplate/2
+    name: Aggiorna Checklist Template
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Tavola spinale gialla",
+        	"descrizione": "Presidio di immobilizzazione",
+        	"quantita": 1,
+        	"userUpdate": "UTENTE_CHE_AGGIORNA",
+        	"checklistTemplateIdentificativo": 1
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464717.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1432b34826284dbea436746a9d3936f9
+    parentId: fld_6d30da89aa3c48acbcbc4fe320f4f797
+    modified: 1641744110621
+    created: 1641715391449
+    url: http://localhost:4000/rigaChecklistTemplate/2
+    name: Elimina Checklist Template
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"userDelete":"UTENTE_CHE_CANCELLA"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464667.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9760eaa0f8744f30a27630e1ab0d167f
+    parentId: fld_44b040bec5ce47a483558b2a48c19661
+    modified: 1641744141139
+    created: 1641730820413
+    url: http://localhost:4000/checklist/inserisci
+    name: Inserisci Checklist
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "PASSATO DAL PROGRAMMA",
+        		"note": "METTERE QUALCHE NOTA",
+        		"veicoloIdentificativo": 1,
+        		"userInsert": "UTENTE_CHE_INSERISCE",
+        		"checklistTemplateIdentificativo":1
+        	}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_bbf4c1850fa744f1b10a1a4380119dfb
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464917.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_44b040bec5ce47a483558b2a48c19661
+    parentId: fld_ff8796cb358b46dab4f500bf0e1d84d5
+    modified: 1641730822169
+    created: 1641730820399
+    name: CheckList
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1641130637734
+    _type: request_group
+  - _id: req_3184f385bef2449faaa0ebb14a1a895a
+    parentId: fld_44b040bec5ce47a483558b2a48c19661
+    modified: 1641740781798
+    created: 1641730820404
+    url: http://localhost:4000/checklist/
+    name: Lista Checklist
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464867.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cdaed53466a643fd9a2249521671c40a
+    parentId: fld_44b040bec5ce47a483558b2a48c19661
+    modified: 1641732024667
+    created: 1641732014149
+    url: http://localhost:4000/checklist/listaCompletatePerVeicolo/1
+    name: Lista Checklist Completate Per Veicolo
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464855
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_15e933517a2445d0981240b06f0ff3cb
+    parentId: fld_44b040bec5ce47a483558b2a48c19661
+    modified: 1641732041114
+    created: 1641732032177
+    url: http://localhost:4000/checklist/listaDaCompletarePerVeicolo/1
+    name: Lista Checklist Da Completare Per Veicolo
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464848.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_aa00c7bab2af4e7bb4484a9019275aa7
+    parentId: fld_44b040bec5ce47a483558b2a48c19661
+    modified: 1641740763473
+    created: 1641730820426
+    url: http://localhost:4000/checklist/1
+    name: Get CheckList By Id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464767.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c2d6e3fc1bb34896b1d9e0da4ec921d2
+    parentId: fld_44b040bec5ce47a483558b2a48c19661
+    modified: 1641744162215
+    created: 1641730820436
+    url: http://localhost:4000/checklist/1
+    name: Aggiorna Checklist
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "CHECKLIST BASE",
+        		"note": "Annotazione",
+        		"userUpdate": "UTENTE_CHE_AGGIORNA"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464717.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_44e15ca3f32e4d7684614531969fde09
+    parentId: fld_44b040bec5ce47a483558b2a48c19661
+    modified: 1641744169510
+    created: 1641734624460
+    url: http://localhost:4000/checklist/conferma/1
+    name: Conferma Checklist
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"isCompletato": true,
+        		"userUpdate": "UTENTE_CHE_CONFERMA"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464692.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f34a9706327742279a3d740a6c3500e9
+    parentId: fld_44b040bec5ce47a483558b2a48c19661
+    modified: 1641744215278
+    created: 1641730820439
+    url: http://localhost:4000/checklist/35
+    name: Elimina Checklist
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"userDelete":"UTENTE_CHE_CANELLA"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464667.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_db3dd7ec0b2e4b1d83a259e676624253
+    parentId: fld_a1efc1aa7b724929a719251cefc35eb9
+    modified: 1641740347854
+    created: 1641730787302
+    url: http://localhost:4000/rigaChecklist/lista/35
+    name: Lista Righe Checklist
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464867.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_a1efc1aa7b724929a719251cefc35eb9
+    parentId: fld_ff8796cb358b46dab4f500bf0e1d84d5
+    modified: 1641730787296
+    created: 1641730787296
+    name: Riga CheckList
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1641130637709
+    _type: request_group
+  - _id: req_def8cb9b9b7445de9bd911e181983114
+    parentId: fld_a1efc1aa7b724929a719251cefc35eb9
+    modified: 1641740333105
+    created: 1641730787316
+    url: http://localhost:4000/rigaChecklist/35
+    name: Get Riga CheckList By Id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464842.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_35586a397df148b688843ac1ef47cec3
+    parentId: fld_a1efc1aa7b724929a719251cefc35eb9
+    modified: 1641744970238
+    created: 1641730787318
+    url: http://localhost:4000/rigaChecklist/2
+    name: Aggiorna Riga Checklist
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"quantita": 1,
+        	"isConfermato":true,
+        	"userUpdate": "UTENTE_CHE_MODIFICA",
+        	"checklistIdentificativo": 1
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_333a91cb73e64dec8b1ab0ab2c67734a
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0MTE0MTk5OSwiZXhwIjoxNjQxNzQ2Nzk5fQ.9pFtxQRNQM6Rbmiu8WTNGNT-ZncSZK1KhFv6-L5_v10
+    metaSortKey: -1641293464717.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_c37960f7192369f77a7fce1a1498d4410ecd7059
+    parentId: wrk_56056af32039461c89a57638e3a7cb05
+    modified: 1641130622504
+    created: 1641130622504
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1641130622504
+    _type: environment
+  - _id: jar_c37960f7192369f77a7fce1a1498d4410ecd7059
+    parentId: wrk_56056af32039461c89a57638e3a7cb05
+    modified: 1641130622506
+    created: 1641130622506
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_a9750dbd25004fd993a5f1d868d1015d
+    parentId: wrk_56056af32039461c89a57638e3a7cb05
+    modified: 1641130622497
+    created: 1641130622497
+    fileName: Checklist Digitale
+    contents: ""
+    contentType: yaml
+    _type: api_spec
