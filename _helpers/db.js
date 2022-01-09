@@ -55,7 +55,11 @@ async function initialize() {
 
     db.Veicoli.hasMany(db.Checklistemplate);
 
-    //ChecklistTemplate è nullo 
+    rigaChecklistTemplateModel = require('../rigachecklisttemplate/rigachecklisttemplate.model');
+    db.RigaChecklistemplate = rigaChecklistTemplateModel(sequelize);
+
+    db.Checklistemplate.hasMany(db.RigaChecklistemplate);
+
 
     // sync all models with database
     await sequelize.sync();

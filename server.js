@@ -13,6 +13,7 @@ app.use(cors());
 app.use('/utenti', require('./utenti/utente.controller'));
 app.use('/veicoli', require('./veicoli/veicoli.controller'));
 app.use('/checklistTemplate', require('./checklisttemplate/checklisttemplate.controller'));
+app.use('/rigaChecklistTemplate', require('./rigachecklisttemplate/rigachecklisttemplate.controller'));
 
 // global error handler
 app.use(errorHandler);

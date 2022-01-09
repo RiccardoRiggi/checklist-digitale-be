@@ -21,5 +21,5 @@ function model(sequelize) {
     };
 
    
-    return sequelize.define('ChecklistTemplate', attributes, options,);
+    return sequelize.define('checklistTemplate', attributes, options,);
 }
