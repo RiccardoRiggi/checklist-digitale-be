@@ -25,7 +25,7 @@ async function autenticaUtente({ email, password }) {
 
     utenteTrovato.password=undefined;    
 
-    const token = jwt.sign({ sub: utenteTrovato.identificativo }, config.secret, { expiresIn: '7d' });
+    const token = jwt.sign({ sub: utenteTrovato.identificativo }, config.secret, { expiresIn: '300s' });
     return { ...omitHash(utenteTrovato.get()), token };
 }
 
@@ -73,6 +73,7 @@ async function aggiornaUtente(id, params) {
 
 //  Funzione che cancella logicamente un utente dalla base dati
 async function cancellaUtenteLogicamente(id, params) {
+    console.warn("ELIMINAZIONE LOGICA DI "+id);
     const utenteTrovato = await getUser(id);
     Object.assign(utenteTrovato, params);
     utenteTrovato.dateDelete=Date.now();
