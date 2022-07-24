@@ -57,7 +57,7 @@ function registrazioneValidation(req, res, next) {
     const schema = Joi.object({
         nome: Joi.string().required(),
         cognome: Joi.string().required(),
-        email: Joi.string().required(),
+        email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
         tRuoloCodice: Joi.string().max(1).required(),
         userInsert: Joi.string().required(),
